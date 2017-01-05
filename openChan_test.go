@@ -91,12 +91,12 @@ func BenchmarkMakeCloseChan(b *testing.B) {
 	start := time.Now()
 	for i := 0; i < b.N; i++ {
 		c1 = make(chan struct{}, 0)
+		close(c1)
 	}
-	close(c1)
 	end := time.Now()
 	use := end.Sub(start)
 	op := use / time.Duration(b.N)
-	b.Logf("BenchmarkMakeCloseChan, %v, Times:%10v, use: %14v %10v/op\n", runtime.Version(), b.N, use, op)
+	b.Logf("%v, Times:%10v, use: %14v %10v/op\n", runtime.Version(), b.N, use, op)
 }
 
 func BenchmarkCloseOpenChan(b *testing.B) {
@@ -112,7 +112,7 @@ func BenchmarkCloseOpenChan(b *testing.B) {
 	end := time.Now()
 	use := end.Sub(start)
 	op := use / time.Duration(b.N)
-	b.Logf("BenchmarkCloseOpenChan, %v, Times:%10v, use: %14v %10v/op\n", runtime.Version(), b.N, use, op)
+	b.Logf("%v, Times:%10v, use: %14v %10v/op\n", runtime.Version(), b.N, use, op)
 }
 
 func BenchmarkCloseOpenChanSync(b *testing.B) {
@@ -126,5 +126,5 @@ func BenchmarkCloseOpenChanSync(b *testing.B) {
 	end := time.Now()
 	use := end.Sub(start)
 	op := use / time.Duration(b.N)
-	b.Logf("BenchmarkCloseOpenChan, %v, Times:%10v, use: %14v %10v/op\n", runtime.Version(), b.N, use, op)
+	b.Logf("%v, Times:%10v, use: %14v %10v/op\n", runtime.Version(), b.N, use, op)
 }
