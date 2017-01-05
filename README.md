@@ -17,4 +17,12 @@
 		openChan_test.go:115: BenchmarkCloseOpenChan, go1.7.4, Times:  50000000, use:     1.4721707s       29ns/op
 		PASS
 		ok  	github.com/yireyun/go-openc	3.364s
+		--- BENCH: BenchmarkCloseOpenChanSync-4
+		openChan_test.go:129: BenchmarkCloseOpenChan, go1.7.4, Times:         1, use:             0s         0s/op
+		openChan_test.go:129: BenchmarkCloseOpenChan, go1.7.4, Times:       100, use:             0s         0s/op
+		openChan_test.go:129: BenchmarkCloseOpenChan, go1.7.4, Times:     10000, use:        498.6µs       49ns/op
+		openChan_test.go:129: BenchmarkCloseOpenChan, go1.7.4, Times:   1000000, use:      44.5274ms       44ns/op
+		openChan_test.go:129: BenchmarkCloseOpenChan, go1.7.4, Times:  30000000, use:      1.364925s       45ns/op
+		PASS
+		ok  	github.com/yireyun/go-openc	7.126s
 ···
