@@ -3,6 +3,7 @@ package openc
 
 import (
 	"reflect"
+	"sync/atomic"
 	"unsafe"
 )
 
@@ -65,7 +66,7 @@ func Open(c interface{}) {
 	}
 	if v := reflect.ValueOf(c); v.Kind() == reflect.Chan {
 		c := (*hchan)(unsafe.Pointer(v.Pointer()))
-		c.closed = 0
+		atomic.CompareAndSwapUint32(&c.closed, 1, 0)
 	}
 }
 

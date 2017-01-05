@@ -114,3 +114,17 @@ func BenchmarkCloseOpenChan(b *testing.B) {
 	op := use / time.Duration(b.N)
 	b.Logf("BenchmarkCloseOpenChan, %v, Times:%10v, use: %14v %10v/op\n", runtime.Version(), b.N, use, op)
 }
+
+func BenchmarkCloseOpenChanSync(b *testing.B) {
+	c2 = make(chan int, 1)
+	start := time.Now()
+	for i := 0; i < b.N; i++ {
+		close(c2)
+		Open(c2)
+	}
+	close(c2)
+	end := time.Now()
+	use := end.Sub(start)
+	op := use / time.Duration(b.N)
+	b.Logf("BenchmarkCloseOpenChan, %v, Times:%10v, use: %14v %10v/op\n", runtime.Version(), b.N, use, op)
+}
